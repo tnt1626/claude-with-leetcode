@@ -78,7 +78,7 @@ e.g. 0001-two-sum.cpp
 
 ### Arrays & Hashing
 
-<sub>Problem</sub> | <sub>Difficulty</sub> | <sub>C++</sub> | <sub>dcc</sub> | <sub>Python</sub>
----- | ---- | ---- | ---- | ----
-<sub>[0001 - Two Sum](https://leetcode.com/problems/two-sum)</sub> | <sub>🟢 Easy</sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub>
+<sub>Problem</sub> | <sub>Difficulty</sub> | <sub>C++</sub> | <sub>Python</sub>
+---- | ---- | ---- | ----
+<sub>[0001 - Two Sum](https://leetcode.com/problems/two-sum)</sub> | <sub>🟢 Easy</sub> | <sub><div align='center'>[✔️](cpp%2F1-two-sum%2FREADME.md)</div></sub> | <sub><div align='center'>[✔️](python%2F1-two-sum%2FREADME.md)</div></sub>
 
