@@ -62,16 +62,6 @@ function askOpenRouter(systemPrompt, userContent) {
 }
 
 async function runMentor() {
-    let gitLog = '';
-    try {
-        gitLog = execSync('git diff-tree --no-commit-id --name-only -r HEAD', {
-            encoding: 'utf8',
-        });
-    } catch (err) {
-        console.error('Failed to read git commit diff:', err.message);
-        return;
-    }
-
     const targetDirs = new Set();
     const supportedLangs = [
         'cpp',
@@ -90,17 +80,51 @@ async function runMentor() {
         'dart',
     ];
 
-    gitLog.split('\n').forEach((line) => {
-        const filePath = line.trim();
-        const parts = filePath.split('/');
-        if (parts.length >= 3 && supportedLangs.includes(parts[0])) {
-            targetDirs.add(path.join(parts[0], parts[1]));
+    let recentCommits = [];
+    try {
+        const commitLogRaw = execSync('git log --format="%H" -n 10', {
+            encoding: 'utf8',
+        });
+        recentCommits = commitLogRaw.trim().split('\n').filter(Boolean);
+    } catch (err) {
+        console.error('Failed to read git log commit history:', err.message);
+        return;
+    }
+
+    for (const commitHash of recentCommits) {
+        try {
+            const gitLog = execSync(
+                `git diff-tree --no-commit-id --name-only -r ${commitHash}`,
+                {
+                    encoding: 'utf8',
+                },
+            );
+
+            gitLog.split('\n').forEach((line) => {
+                const filePath = line.trim();
+                const parts = filePath.split('/');
+                if (parts.length >= 3 && supportedLangs.includes(parts[0])) {
+                    targetDirs.add(path.join(parts[0], parts[1]));
+                }
+            });
+
+            if (targetDirs.size > 0) {
+                console.log(
+                    `Targeting solution files found in historical commit: ${commitHash}`,
+                );
+                break;
+            }
+        } catch (err) {
+            console.error(
+                `Failed to read diff for commit ${commitHash}:`,
+                err.message,
+            );
         }
-    });
+    }
 
     if (targetDirs.size === 0) {
         console.log(
-            'No new solution folders found in the last commit. Skipping analysis.',
+            'No new solution folders found in recent commit history. Skipping analysis.',
         );
         return;
     }
