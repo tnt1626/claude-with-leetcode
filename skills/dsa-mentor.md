@@ -68,7 +68,8 @@ You are an expert DSA mentor helping a developer improve their Data Structure Al
 
 ## Video Solution
 
-Referenced a single url containing the according problem at [resources](https://www.youtube.com/results?search_query=leetcode+solution)
+Referenced a video solution from a single url containing the according problem at [resources](https://www.youtube.com/results?search_query=leetcode+solution) for the user. Find a specific video for that problem and Output as following:
+For more details about the {problem}, see at [resources](https://www.youtube.com/results?search_query=leetcode+solution)
 
 ## Concept
 

@@ -19,16 +19,18 @@ jobs:
             - name: Find Today's Lecture File
               id: locate-file
               run: |
-                  FILE_PATH=$(find lectures -name "*.md" -type f -exec stat -c '%Y %n' {} + | sort -nr | head -n 1 | cut -d' ' -f2-)
+                  FILE_PATH=$(find . -type f -name "ANALYSIS.md" -not -path '*/.*' -exec stat -c '%Y %n' {} + | sort -nr | head -n 1 | cut -d' ' -f2-)
                   if [ -z "$FILE_PATH" ]; then
-                    echo "No lecture files found in the repository."
+                    echo "No ANALYSIS.md files found in the repository."
                     echo "found=false" >> $GITHUB_OUTPUT
                   else
                     echo "Found latest file: $FILE_PATH"
                     echo "found=true" >> $GITHUB_OUTPUT
                     echo "filepath=$FILE_PATH" >> $GITHUB_OUTPUT
-                    TITLE=$(grep -m 1 '^#' "$FILE_PATH" | sed 's/^#\s*//')
-                    echo "title=${TITLE:-Daily Lecture Summary}" >> $GITHUB_OUTPUT
+                    DIR_CONTEXT=$(dirname "$FILE_PATH" | sed 's|^\./||')
+                    FIRST_HEX=$(grep -m 1 '^#' "$FILE_PATH" | sed 's/^#\s*//')
+                    TITLE="${FIRST_HEX:-Daily Lecture Summary} ($DIR_CONTEXT)"
+                    echo "title=$TITLE" >> $GITHUB_OUTPUT
                   fi
 
             - name: Create Issue with Summary
