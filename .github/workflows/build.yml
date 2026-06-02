@@ -29,7 +29,7 @@ jobs:
                   LEETCODE_USERNAME: ${{ secrets.LEETCODE_USERNAME }}
                   LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
                   LEETCODE_CSRF_TOKEN: ${{ secrets.LEETCODE_CSRF_TOKEN }}
-              run: node syncLeetCode.js
+              run: node syncLeetcode.js
 
             - name: Verify site data URLs
               run: node verifySiteData.js
