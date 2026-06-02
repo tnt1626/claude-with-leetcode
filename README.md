@@ -90,6 +90,13 @@ e.g. 0001-two-sum.cpp
 ---- | ---- | ---- | ---- | ---- | ----
 <sub>[0002 - Add Two Numbers](https://leetcode.com/problems/add-two-numbers)</sub> | <sub>🟡 Medium</sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>[✔️](java%2F2-add-two-numbers%2FREADME.md)</div></sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub>
 
+### String
+
+<sub>Problem</sub> | <sub>Difficulty</sub> | <sub>C++</sub> | <sub>Java</sub> | <sub>Python</sub> | <sub>Rust</sub>
+---- | ---- | ---- | ---- | ---- | ----
+<sub>[0006 - Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion)</sub> | <sub>🟡 Medium</sub> | <sub><div align='center'>[✔️](cpp%2F6-zigzag-conversion%2FREADME.md)</div></sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub>
+<sub>[1456 - Maximum Number of Vowels in a Substring of Given Length](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length)</sub> | <sub>🟡 Medium</sub> | <sub><div align='center'>[✔️](cpp%2F1456-maximum-number-of-vowels-in-a-substring-of-given-length%2FREADME.md)</div></sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub>
+
 ### Array
 
 <sub>Problem</sub> | <sub>Difficulty</sub> | <sub>C++</sub> | <sub>Java</sub> | <sub>Python</sub> | <sub>Rust</sub>
@@ -106,12 +113,6 @@ e.g. 0001-two-sum.cpp
 ---- | ---- | ---- | ---- | ---- | ----
 <sub>[0424 - Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement)</sub> | <sub>🟡 Medium</sub> | <sub><div align='center'>[✔️](cpp%2F424-longest-repeating-character-replacement%2FREADME.md)</div></sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub>
 <sub>[1358 - Number of Substrings Containing All Three Characters](https://leetcode.com/problems/number-of-substrings-containing-all-three-characters)</sub> | <sub>🟡 Medium</sub> | <sub><div align='center'>[✔️](cpp%2F1358-number-of-substrings-containing-all-three-characters%2FREADME.md)</div></sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub>
-
-### String
-
-<sub>Problem</sub> | <sub>Difficulty</sub> | <sub>C++</sub> | <sub>Java</sub> | <sub>Python</sub> | <sub>Rust</sub>
----- | ---- | ---- | ---- | ---- | ----
-<sub>[1456 - Maximum Number of Vowels in a Substring of Given Length](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length)</sub> | <sub>🟡 Medium</sub> | <sub><div align='center'>[✔️](cpp%2F1456-maximum-number-of-vowels-in-a-substring-of-given-length%2FREADME.md)</div></sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub> | <sub><div align='center'>❌</div></sub>
 
 ### Uncategorized
 

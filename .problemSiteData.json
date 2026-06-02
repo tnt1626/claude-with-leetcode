@@ -15,6 +15,14 @@
     "java": true
   },
   {
+    "problem": "Zigzag Conversion",
+    "pattern": "String",
+    "difficulty": "Medium",
+    "link": "zigzag-conversion",
+    "code": "0006",
+    "cpp": true
+  },
+  {
     "problem": "Contains Duplicate II",
     "pattern": "Array",
     "difficulty": "Easy",
