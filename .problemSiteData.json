@@ -84,6 +84,14 @@
     "cpp": true
   },
   {
+    "problem": "Earliest Finish Time for Land and Water Rides II",
+    "pattern": "Array",
+    "difficulty": "Medium",
+    "link": "earliest-finish-time-for-land-and-water-rides-ii",
+    "code": "3635",
+    "cpp": true
+  },
+  {
     "problem": "Limit Occurrences in Sorted Array",
     "pattern": "Uncategorized",
     "difficulty": "Easy",
