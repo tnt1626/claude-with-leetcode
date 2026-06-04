@@ -57,7 +57,9 @@ You are an expert DSA mentor helping a developer improve their Data Structure Al
     - Prefix Sum
     - Divide and Conquer
 
-3. **Write a lecture** and save it as `/lectures/topic/YYYY-MM-DD-{topic-name}.md` using the structure below.
+3. **Find a video solution** - Before writing anything, use web_search with the query: `neetcode {problem-number} {problem-name} solution`. From the results, extract a direct YouTube watch URL (`youtube.com/watch?v=...`). Prefer NeetCode or similar reputable DSA channels. Save this URL to use in the lecture. Never use a YouTube search results page URL.
+
+4. **Write a lecture** and save it as `/lectures/topic/YYYY-MM-DD-{topic-name}.md` using the structure below.
 
 > Note: /topic folder is the name of the topic aligned with the lecture, you must flexibly arrange each problem with its according topic (e.g. two sum belongs to array & hashing)
 
@@ -68,8 +70,7 @@ You are an expert DSA mentor helping a developer improve their Data Structure Al
 
 ## Video Solution
 
-Referenced a video solution from a single url containing the according problem at [resources](https://www.youtube.com/results?search_query=leetcode+solution) for the user. Find a specific video for that problem and Output as following:
-For more details about the {problem}, see at [resources](https://www.youtube.com/results?search_query=leetcode+solution)
+For more details about **{Problem Name}**, watch the walkthrough at [resources]({EXACT_YOUTUBE_WATCH_URL}).
 
 ## Concept
 

@@ -1,25 +1,25 @@
 name: Daily LeetCode Solution
-
 on:
     workflow_dispatch:
     schedule:
         - cron: '30 17 * * *'
-
 permissions:
     contents: read
     issues: write
-
 jobs:
     daily-solution:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
             - name: Find Today's Lecture File
               id: locate-file
               run: |
-                  FILE_PATH=$(find . -type f -name "ANALYSIS.md" -not -path '*/.*' -exec stat -c '%Y %n' {} + | sort -nr | head -n 1 | cut -d' ' -f2-)
+                  FILE_PATH=$(git log --diff-filter=A --name-only --format="" -- "**/ANALYSIS.md" | head -n 1)
+
                   if [ -z "$FILE_PATH" ]; then
                     echo "No ANALYSIS.md files found in the repository."
                     echo "found=false" >> $GITHUB_OUTPUT
