@@ -85,6 +85,16 @@
     "code": "1567"
   },
   {
+    "problem": "Determine if Two Strings Are Close",
+    "pattern": "Hash Table",
+    "difficulty": "Medium",
+    "link": "determine-if-two-strings-are-close",
+    "code": "1657",
+    "rust": true,
+    "python": true,
+    "cpp": true
+  },
+  {
     "problem": "Intersection of Multiple Arrays",
     "pattern": "Array",
     "difficulty": "Easy",
