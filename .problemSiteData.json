@@ -187,5 +187,37 @@
     "difficulty": "Easy",
     "link": "limit-occurrences-in-sorted-array",
     "code": "3940"
+  },
+  {
+    "problem": "Exactly One Consecutive Set Bits Pair",
+    "pattern": "Uncategorized",
+    "difficulty": "Easy",
+    "link": "exactly-one-consecutive-set-bits-pair",
+    "code": "3950",
+    "cpp": true
+  },
+  {
+    "problem": "Minimum Energy to Maintain Brightness",
+    "pattern": "Uncategorized",
+    "difficulty": "Medium",
+    "link": "minimum-energy-to-maintain-brightness",
+    "code": "3951",
+    "cpp": true
+  },
+  {
+    "problem": "Maximum Total Value of Covered Indices",
+    "pattern": "Uncategorized",
+    "difficulty": "Medium",
+    "link": "maximum-total-value-of-covered-indices",
+    "code": "3952",
+    "cpp": true
+  },
+  {
+    "problem": "Maximum Score with Co-Prime Element",
+    "pattern": "Uncategorized",
+    "difficulty": "Hard",
+    "link": "maximum-score-with-co-prime-element",
+    "code": "3953",
+    "cpp": true
   }
 ]
