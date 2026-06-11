@@ -1,0 +1,48 @@
+name: Issue Deduplication
+
+on:
+    issues:
+        types:
+            - 'opened'
+            - 'reopened'
+    issue_comment:
+        types:
+            - 'created'
+    workflow_dispatch:
+        inputs:
+            issue_number:
+                description: 'issue number to dedup'
+                required: true
+                type: 'number'
+
+jobs:
+    deduplicate:
+        runs-on: ubuntu-latest
+        if: ${{ github.repository == 'Stewie-pixel/claude-with-leetcode' }}
+
+        permissions:
+            issues: write
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Generate GitHub App Token
+              id: generate_token
+              if: ${{ env.APP_ID != '' }}
+              env:
+                  APP_ID: ${{ secrets.APP_ID }}
+              uses: actions/create-github-app-token@a8d616148505b5069dccd32f177bb87d7f39123b
+              with:
+                  app-id: ${{ secrets.APP_ID }}
+                  private-key: ${{ secrets.PRIVATE_KEY }}
+
+            - name: Check for duplicate issues
+              env:
+                  OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+              uses: actions/github-script@v7
+              with:
+                  github-token: ${{ steps.generate_token.outputs.token || secrets.GITHUB_TOKEN }}
+                  script: |
+                      const { default: deduplicate } = await import('${{ github.workspace }}/.github/scripts/deduplicate-issues.js');
+                      await deduplicate({ github, context });

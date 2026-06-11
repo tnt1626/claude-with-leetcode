@@ -1,0 +1,107 @@
+name: Issue Assign
+on:
+    issue_comment:
+        types: [created]
+
+permissions:
+    issues: write
+
+jobs:
+    assign:
+        runs-on: ubuntu-latest
+        if: ${{ github.repository == 'Stewie-pixel/claude-with-leetcode' && github.event.issue.pull_request == null }}
+        steps:
+            - name: Generate GitHub App Token
+              id: generate_token
+              if: ${{ env.APP_ID != '' }}
+              env:
+                  APP_ID: ${{ secrets.APP_ID }}
+              uses: actions/create-github-app-token@a8d616148505b5069dccd32f177bb87d7f39123b
+              with:
+                  app-id: ${{ secrets.APP_ID }}
+                  private-key: ${{ secrets.PRIVATE_KEY }}
+
+            - name: Handle assign and unassign commands
+              uses: actions/github-script@v7
+              with:
+                  github-token: ${{ steps.generate_token.outputs.token || secrets.GITHUB_TOKEN }}
+                  script: |
+                      const body = context.payload.comment.body.trim().toLowerCase();
+                      const commenter = context.payload.comment.user.login;
+                      const issueNumber = context.payload.issue.number;
+                      const owner = context.repo.owner;
+                      const repo = context.repo.repo;
+
+                      if (!body.startsWith('/assign') && !body.startsWith('/unassign')) return;
+
+                      const issue = await github.rest.issues.get({ owner, repo, issue_number: issueNumber });
+
+                      if (issue.data.state === 'closed') {
+                          await github.rest.issues.createComment({
+                              owner, repo, issue_number: issueNumber,
+                              body: `Hi @${commenter} This issue is already closed and cannot be assigned.`,
+                          });
+                          return;
+                      }
+
+                      if (body.startsWith('/assign')) {
+                          const assignees = issue.data.assignees.map(a => a.login);
+
+                          if (assignees.includes(commenter)) {
+                              await github.rest.issues.createComment({
+                                  owner, repo, issue_number: issueNumber,
+                                  body: `@${commenter}, You are already assigned to this issue.`,
+                              });
+                              return;
+                          }
+
+                          if (assignees.length > 0) {
+                              await github.rest.issues.createComment({
+                                  owner, repo, issue_number: issueNumber,
+                                  body: `Hi @${commenter} This issue is already assigned to @${assignees.join(', @')}. Please find another issue to work on.`,
+                              });
+                              return;
+                          }
+
+                          await github.rest.issues.addAssignees({
+                              owner, repo, issue_number: issueNumber,
+                              assignees: [commenter],
+                          });
+
+                          await github.rest.issues.addLabels({
+                              owner, repo, issue_number: issueNumber,
+                              labels: ['in-progress'],
+                          });
+
+                          await github.rest.issues.createComment({
+                              owner, repo, issue_number: issueNumber,
+                              body: `Hi @${commenter}, You have been assigned to this issue. Good luck! 🚀`,
+                          });
+                      }
+
+                      if (body.startsWith('/unassign')) {
+                          const assignees = issue.data.assignees.map(a => a.login);
+
+                          if (!assignees.includes(commenter)) {
+                              await github.rest.issues.createComment({
+                                  owner, repo, issue_number: issueNumber,
+                                  body: `@${commenter}, You are not assigned to this issue.`,
+                              });
+                              return;
+                          }
+
+                          await github.rest.issues.removeAssignees({
+                              owner, repo, issue_number: issueNumber,
+                              assignees: [commenter],
+                          });
+
+                          await github.rest.issues.removeLabel({
+                              owner, repo, issue_number: issueNumber,
+                              name: 'in-progress',
+                          }).catch(() => {});
+
+                          await github.rest.issues.createComment({
+                              owner, repo, issue_number: issueNumber,
+                              body: `Hi @${commenter}, You have been unassigned from this issue.`,
+                          });
+                      }

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+    - name: 'Contact Us'
+      url: 'https://github.com/Stewie-pixel/claude-with-leetcode/issues/new?assignees=&labels=question&template=contact-us.md&title=%5BQuestion%5D+%3CYour+Question+Here%3E'
+      about: 'If you have any questions or need assistance, please feel free to contact us through this link.'
