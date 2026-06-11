@@ -1,0 +1,141 @@
+name: 'Automated Issue Triage'
+
+on:
+    issues:
+        types:
+            - 'opened'
+            - 'reopened'
+    issue_comment:
+        types:
+            - 'created'
+    workflow_dispatch:
+        inputs:
+            issue_number:
+                description: 'issue number to triage'
+                required: true
+                type: 'number'
+    workflow_call:
+        inputs:
+            issue_number:
+                description: 'issue number to triage'
+                required: false
+                type: 'string'
+
+concurrency:
+    group: '${{ github.workflow }}-${{ github.event.issue.number || github.event.inputs.issue_number || inputs.issue_number }}'
+    cancel-in-progress: true
+
+defaults:
+    run:
+        shell: 'bash'
+
+permissions:
+    contents: 'read'
+    issues: 'write'
+    actions: 'write'
+
+jobs:
+    triage-issue:
+        if: |-
+            (github.repository == 'Stewie-pixel/claude-with-leetcode') &&
+            (
+              github.event_name == 'workflow_dispatch' ||
+              github.event_name == 'workflow_call' ||
+              (
+                (github.event_name == 'issues' || github.event_name == 'issue_comment') &&
+                (github.event_name != 'issue_comment' || (
+                  contains(github.event.comment.body, '/triage') &&
+                  (
+                    github.event.comment.author_association == 'OWNER' ||
+                    github.event.comment.author_association == 'MEMBER' ||
+                    github.event.comment.author_association == 'COLLABORATOR'
+                  )
+                ))
+              )
+            ) &&
+            !contains(github.event.issue.labels.*.name, 'area/')
+        timeout-minutes: 5
+        runs-on: 'ubuntu-latest'
+
+        steps:
+            - name: 'Get issue data for manual trigger'
+              id: 'get_issue_data'
+              if: >-
+                  github.event_name == 'workflow_dispatch' ||
+                  github.event_name == 'workflow_call'
+              uses: 'actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea'
+              with:
+                  github-token: '${{ secrets.GITHUB_TOKEN }}'
+                  script: |
+                      const issueNumber = ${{ github.event.inputs.issue_number || inputs.issue_number }};
+                      const { data: issue } = await github.rest.issues.get({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          issue_number: issueNumber,
+                      });
+                      core.setOutput('labels', issue.labels.map(l => l.name).join(','));
+
+            - name: 'Manual trigger pre-flight checks'
+              if: >-
+                  github.event_name == 'workflow_dispatch' ||
+                  github.event_name == 'workflow_call'
+              env:
+                  ISSUE_NUMBER_INPUT: '${{ github.event.inputs.issue_number || inputs.issue_number }}'
+                  LABELS: '${{ steps.get_issue_data.outputs.labels }}'
+              run: |
+                  if echo "${LABELS}" | grep -q 'area/'; then
+                    echo "Issue #${ISSUE_NUMBER_INPUT} already has an area/ label. Stopping."
+                    exit 1
+                  fi
+                  echo "Pre-flight checks passed."
+
+            - name: 'Checkout repository'
+              uses: 'actions/checkout@v4'
+              with:
+                  persist-credentials: false
+
+            - name: 'Generate GitHub App Token'
+              id: 'generate_token'
+              if: "${{ env.APP_ID != '' }}"
+              env:
+                  APP_ID: '${{ secrets.APP_ID }}'
+              uses: 'actions/create-github-app-token@a8d616148505b5069dccd32f177bb87d7f39123b'
+              with:
+                  app-id: '${{ secrets.APP_ID }}'
+                  private-key: '${{ secrets.PRIVATE_KEY }}'
+
+            - name: 'Triage issue'
+              id: 'triage_issue'
+              env:
+                  OPENROUTER_API_KEY: '${{ secrets.OPENROUTER_API_KEY }}'
+              uses: 'actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea'
+              with:
+                  github-token: '${{ steps.generate_token.outputs.token || secrets.GITHUB_TOKEN }}'
+                  script: |
+                      const { default: triage } = await import('${{ github.workspace }}/.github/scripts/triage-issues.js');
+                      await triage({ github, context, core });
+
+            - name: 'Clean up conflicting status labels'
+              uses: 'actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea'
+              with:
+                  github-token: '${{ steps.generate_token.outputs.token || secrets.GITHUB_TOKEN }}'
+                  script: |
+                      const { default: cleanup } = await import('${{ github.workspace }}/.github/scripts/cleanup-triage.js');
+                      await cleanup({ github, context, core });
+
+            - name: 'Post triage failure comment'
+              if: "${{ failure() && steps.triage_issue.outcome == 'failure' }}"
+              env:
+                  ISSUE_NUMBER: >-
+                      ${{ github.event.issue.number || github.event.inputs.issue_number || inputs.issue_number }}
+                  RUN_URL: '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+              uses: 'actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea'
+              with:
+                  github-token: '${{ steps.generate_token.outputs.token || secrets.GITHUB_TOKEN }}'
+                  script: |
+                      await github.rest.issues.createComment({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          issue_number: parseInt(process.env.ISSUE_NUMBER),
+                          body: `Automated triage encountered a problem and could not classify this issue. A maintainer will triage manually.\n\n---\n*Automated triage by [@mirabile](https://github.com/apps/mirabile)*`,
+                      });
