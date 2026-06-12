@@ -1,17 +1,23 @@
 name: PR Code Review
 
 on:
-    pull_request:
-        types: [opened, synchronize]
     pull_request_target:
         types: [opened, synchronize]
+    issue_comment:
+        types: [created]
 
 jobs:
     code-review:
         runs-on: ubuntu-latest
         if: >-
             github.repository == 'Stewie-pixel/claude-with-leetcode' &&
-            github.actor != 'mirabile-cli[bot]'
+            github.actor != 'mirabile-cli[bot]' &&
+            (
+              github.event_name == 'pull_request_target' ||
+              (github.event_name == 'issue_comment' &&
+               github.event.issue.pull_request != null &&
+               github.event.comment.user.login != 'mirabile-cli[bot]')
+            )
 
         permissions:
             contents: read
@@ -23,6 +29,10 @@ jobs:
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
+
+            - name: Fetch PR commits for diff
+              if: github.event_name == 'pull_request_target'
+              run: git fetch origin refs/pull/${{ github.event.pull_request.number }}/head
 
             - name: Generate GitHub App Token
               id: app-token
