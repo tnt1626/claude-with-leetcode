@@ -200,6 +200,11 @@
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/java/143-reorder-list/ANALYSIS.md"
   },
   {
+    "slug": "19-remove-nth-node-from-end-of-list",
+    "title": "Fast & Slow Pointers",
+    "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/java/19-remove-nth-node-from-end-of-list/ANALYSIS.md"
+  },
+  {
     "slug": "206-reverse-linked-list",
     "title": "Reverse Linked List",
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/java/206-reverse-linked-list/ANALYSIS.md"
