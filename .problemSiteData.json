@@ -94,6 +94,14 @@
     "code": "0724"
   },
   {
+    "problem": "Largest Component Size by Common Factor",
+    "pattern": "Array, Hash Table, Math, Union-Find, Number Theory",
+    "difficulty": "Hard",
+    "link": "largest-component-size-by-common-factor",
+    "code": "0952",
+    "cpp": true
+  },
+  {
     "problem": "Number of Substrings Containing All Three Characters",
     "pattern": "Hash Table",
     "difficulty": "Medium",
@@ -157,6 +165,14 @@
     "code": "1657",
     "rust": true,
     "python": true,
+    "cpp": true
+  },
+  {
+    "problem": "Process Restricted Friend Requests",
+    "pattern": "Union-Find, Graph Theory",
+    "difficulty": "Hard",
+    "link": "process-restricted-friend-requests",
+    "code": "2076",
     "cpp": true
   },
   {
