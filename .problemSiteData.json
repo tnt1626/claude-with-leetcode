@@ -150,6 +150,14 @@
     "cpp": true
   },
   {
+    "problem": "Minimum Number of Vertices to Reach All Nodes",
+    "pattern": "Graph Theory",
+    "difficulty": "Medium",
+    "link": "minimum-number-of-vertices-to-reach-all-nodes",
+    "code": "1557",
+    "cpp": true
+  },
+  {
     "problem": "Maximum Length of Subarray With Positive Product",
     "pattern": "Array",
     "difficulty": "Medium",
@@ -165,6 +173,14 @@
     "code": "1657",
     "rust": true,
     "python": true,
+    "cpp": true
+  },
+  {
+    "problem": "Maximum Path Quality of a Graph",
+    "pattern": "Array, Backtracking, Graph Theory",
+    "difficulty": "Hard",
+    "link": "maximum-path-quality-of-a-graph",
+    "code": "2065",
     "cpp": true
   },
   {
@@ -239,6 +255,14 @@
     "cpp": true
   },
   {
+    "problem": "Add Edges to Make Degrees of All Nodes Even",
+    "pattern": "Hash Table, Graph Theory",
+    "difficulty": "Hard",
+    "link": "add-edges-to-make-degrees-of-all-nodes-even",
+    "code": "2508",
+    "cpp": true
+  },
+  {
     "problem": "Left and Right Sum Differences",
     "pattern": "Array",
     "difficulty": "Easy",
@@ -286,6 +310,14 @@
     "link": "number-of-ways-to-assign-edge-weights-ii",
     "code": "3559",
     "python": true
+  },
+  {
+    "problem": "Process String with Special Operations I",
+    "pattern": "String, Simulation",
+    "difficulty": "Medium",
+    "link": "process-string-with-special-operations-i",
+    "code": "3612",
+    "cpp": true
   },
   {
     "problem": "Earliest Finish Time for Land and Water Rides I",
