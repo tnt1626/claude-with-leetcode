@@ -32,7 +32,6 @@ char* longestPalindrome(char* s) {
     result[maxLen] = '\0';
     return result;
 }
-    int l, r;
     for(int i = 0; i < n; i++){
         l = r = i;
         while(r + 1 < n && s[r + 1] == s[r]){
