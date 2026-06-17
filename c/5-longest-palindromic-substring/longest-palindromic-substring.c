@@ -1,8 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-    int n = strlen(s);
-
 char* longestPalindrome(char* s) {
     int n = strlen(s);
     if (n == 0) {
