@@ -50,6 +50,11 @@
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/1545-find-kth-bit-in-nth-binary-string/ANALYSIS.md"
   },
   {
+    "slug": "1557-minimum-number-of-vertices-to-reach-all-nodes",
+    "title": "Graphs - Indegree Zero Nodes",
+    "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/1557-minimum-number-of-vertices-to-reach-all-nodes/ANALYSIS.md"
+  },
+  {
     "slug": "1567-maximum-length-of-subarray-with-positive-product",
     "title": "Sliding Window",
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/1567-maximum-length-of-subarray-with-positive-product/ANALYSIS.md"
@@ -58,6 +63,11 @@
     "slug": "1657-determine-if-two-strings-are-close",
     "title": "Arrays & Hashing  ",
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/1657-determine-if-two-strings-are-close/ANALYSIS.md"
+  },
+  {
+    "slug": "2065-maximum-path-quality-of-a-graph",
+    "title": "Backtracking",
+    "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/2065-maximum-path-quality-of-a-graph/ANALYSIS.md"
   },
   {
     "slug": "2076-process-restricted-friend-requests",
@@ -115,14 +125,29 @@
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/2390-removing-stars-from-a-string/ANALYSIS.md"
   },
   {
+    "slug": "2508-add-edges-to-make-degrees-of-all-nodes-even",
+    "title": "Graphs",
+    "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/2508-add-edges-to-make-degrees-of-all-nodes-even/ANALYSIS.md"
+  },
+  {
     "slug": "2574-left-and-right-sum-differences",
     "title": "Prefix Sum",
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/2574-left-and-right-sum-differences/ANALYSIS.md"
   },
   {
+    "slug": "332-reconstruct-itinerary",
+    "title": "Graphs",
+    "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/332-reconstruct-itinerary/ANALYSIS.md"
+  },
+  {
     "slug": "3512-minimum-operations-to-make-array-sum-divisible-by-k",
     "title": "Arrays & Hashing",
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/3512-minimum-operations-to-make-array-sum-divisible-by-k/ANALYSIS.md"
+  },
+  {
+    "slug": "3612-process-string-with-special-operations-i",
+    "title": "Stack",
+    "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/3612-process-string-with-special-operations-i/ANALYSIS.md"
   },
   {
     "slug": "3635-earliest-finish-time-for-land-and-water-rides-ii",
@@ -218,6 +243,11 @@
     "slug": "77-combinations",
     "title": "Backtracking",
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/77-combinations/ANALYSIS.md"
+  },
+  {
+    "slug": "843-guess-the-word",
+    "title": "Greedy",
+    "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/843-guess-the-word/ANALYSIS.md"
   },
   {
     "slug": "93-restore-ip-addresses",
