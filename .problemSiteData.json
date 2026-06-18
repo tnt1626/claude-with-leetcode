@@ -480,6 +480,7 @@
     "difficulty": "Easy",
     "link": "add-two-promises",
     "code": "2723",
+    "javascript": true,
     "typescript": true
   },
   {
