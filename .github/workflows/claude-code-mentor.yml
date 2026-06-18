@@ -34,6 +34,9 @@ on:
             - 'dcc/scala/**'
             - 'dcc/dart/**'
 
+permissions:
+    contents: write
+
 jobs:
     explain:
         if: "!contains(github.event.head_commit.message, '[skip ci]')"
