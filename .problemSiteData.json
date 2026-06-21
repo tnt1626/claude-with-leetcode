@@ -345,6 +345,14 @@
     "cpp": true
   },
   {
+    "problem": "Maximum Ice Cream Bars",
+    "pattern": "Array, Greedy, Sorting, Counting Sort",
+    "difficulty": "Medium",
+    "link": "maximum-ice-cream-bars",
+    "code": "1833",
+    "cpp": true
+  },
+  {
     "problem": "Maximum Building Height",
     "pattern": "Array, Math, Sorting",
     "difficulty": "Hard",
