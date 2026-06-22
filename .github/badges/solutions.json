@@ -45,6 +45,11 @@
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/contest/biweekly/cpp/3952-maximum-total-value-of-covered-indices/ANALYSIS.md"
   },
   {
+    "slug": "1189-maximum-number-of-balloons",
+    "title": "Arrays & Hashing",
+    "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/1189-maximum-number-of-balloons/ANALYSIS.md"
+  },
+  {
     "slug": "128-longest-consecutive-sequence",
     "title": "Arrays & Hashing",
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/128-longest-consecutive-sequence/ANALYSIS.md"
@@ -88,6 +93,11 @@
     "slug": "1657-determine-if-two-strings-are-close",
     "title": "Arrays & Hashing  ",
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/1657-determine-if-two-strings-are-close/ANALYSIS.md"
+  },
+  {
+    "slug": "1765-map-of-highest-peak",
+    "title": "Graphs",
+    "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/1765-map-of-highest-peak/ANALYSIS.md"
   },
   {
     "slug": "1833-maximum-ice-cream-bars",
