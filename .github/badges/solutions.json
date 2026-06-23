@@ -55,6 +55,11 @@
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/128-longest-consecutive-sequence/ANALYSIS.md"
   },
   {
+    "slug": "1311-get-watched-videos-by-your-friends",
+    "title": "Graphs - BFS Level Extraction  ",
+    "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/1311-get-watched-videos-by-your-friends/ANALYSIS.md"
+  },
+  {
     "slug": "1344-angle-between-hands-of-a-clock",
     "title": "Math & Geometry",
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/1344-angle-between-hands-of-a-clock/ANALYSIS.md"
@@ -228,6 +233,11 @@
     "slug": "3691-maximum-total-subarray-value-ii",
     "title": "Heap / Priority Queue",
     "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/3691-maximum-total-subarray-value-ii/ANALYSIS.md"
+  },
+  {
+    "slug": "3699-number-of-zigzag-arrays-i",
+    "title": "Dynamic Programming",
+    "url": "https://github.com/Stewie-pixel/claude-with-leetcode/blob/main/cpp/3699-number-of-zigzag-arrays-i/ANALYSIS.md"
   },
   {
     "slug": "3751-total-waviness-of-numbers-in-range-i",
