@@ -235,6 +235,14 @@
     "cpp": true
   },
   {
+    "problem": "Bus Routes",
+    "pattern": "Array, Hash Table, Breadth-First Search",
+    "difficulty": "Hard",
+    "link": "bus-routes",
+    "code": "0815",
+    "cpp": true
+  },
+  {
     "problem": "Guess the Word",
     "pattern": "Array, Math, String, Interactive, Game Theory",
     "difficulty": "Hard",
@@ -252,6 +260,14 @@
     "difficulty": "Hard",
     "link": "largest-component-size-by-common-factor",
     "code": "0952",
+    "cpp": true
+  },
+  {
+    "problem": "Shortest Path with Alternating Colors",
+    "pattern": "Breadth-First Search, Graph Theory",
+    "difficulty": "Medium",
+    "link": "shortest-path-with-alternating-colors",
+    "code": "1129",
     "cpp": true
   },
   {
@@ -609,6 +625,14 @@
     "difficulty": "Hard",
     "link": "number-of-zigzag-arrays-i",
     "code": "3699",
+    "cpp": true
+  },
+  {
+    "problem": "Number of ZigZag Arrays II",
+    "pattern": "Math, Dynamic Programming",
+    "difficulty": "Hard",
+    "link": "number-of-zigzag-arrays-ii",
+    "code": "3700",
     "cpp": true
   },
   {
