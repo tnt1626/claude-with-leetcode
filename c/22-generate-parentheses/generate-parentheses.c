@@ -17,7 +17,8 @@ void backtracking(char **result, int n, int *returnSize, int open, int close, ch
 }
 
 char** generateParenthesis(int n, int* returnSize) {
-    char **result = (char **)malloc(sizeof(char *) * 2000);
+    enum { MAX_RESULTS = 1430 }; // Max combinations for n<=8 (Catalan(8))
+    char **result = (char **)malloc(sizeof(char *) * MAX_RESULTS);
     (*returnSize) = 0;
     int position = 0;
     char *combination = (char *)malloc(sizeof(char) * (2 * n + 1));
