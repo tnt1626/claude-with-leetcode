@@ -444,6 +444,14 @@
     "cpp": true
   },
   {
+    "problem": "Number of Strings That Appear as Substrings in Word",
+    "pattern": "Array, String",
+    "difficulty": "Easy",
+    "link": "number-of-strings-that-appear-as-substrings-in-word",
+    "code": "1967",
+    "cpp": true
+  },
+  {
     "problem": "Find if Path Exists in Graph",
     "pattern": "Depth-First Search, Breadth-First Search, Union-Find, Graph Theory",
     "difficulty": "Easy",
